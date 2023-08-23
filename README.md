@@ -5,30 +5,43 @@ In this portfolio, I demonstrate my expertise in data analysis by working with a
 
 To address the stakeholders' inquiries, I focused on the following key questions:
 
-1. What were the average daily sales for each month in the year 2011, and how did the month-over-month percentage change in average daily sales fluctuate?
+**1. What were the average daily sales for each month in the year 2011, and how did the month-over-month percentage change in average daily sales fluctuate?**
 
-  By answering this question, I provide insights into the average daily sales trends for each month in 2011 and the relative change in sales compared to the previous month.
+```By answering this question, I provide insights into the average daily sales trends for each month in 2011 and the relative change in sales compared to the previous month.```
 
-2. How did the total sales per month unfold in 2011, and what were the month-over-month percentage variations in total sales?
+&nbsp;
 
-  This analysis uncovers the monthly sales totals for the year 2011 and offers a clear perspective on the percentage change in total sales between consecutive months.
+**2. How did the total sales per month unfold in 2011, and what were the month-over-month percentage variations in total sales?**
 
-3. What is the overall count of transactions for each month in 2011, shedding light on the transactional dynamics throughout the year?
+ ``` This analysis uncovers the monthly sales totals for the year 2011 and offers a clear perspective on the percentage change in total sales between consecutive months.```
+ 
+&nbsp;
 
-  This exploration presents the total transaction count for each month in 2011, providing an overview of the activity and engagement level over time.
+**3. What is the overall count of transactions for each month in 2011, shedding light on the transactional dynamics throughout the year?**
 
-4. What is the total number of units sold for each month in 2011, and how did this metric evolve over the course of the year?
+```This exploration presents the total transaction count for each month in 2011, providing an overview of the activity and engagement level over time.```
 
-  This analysis offers insights into the monthly variations in the total quantity of units sold, illuminating the demand patterns and fluctuations across the year.
+&nbsp;
 
-5. How did the average sales per transaction fare on a monthly basis in 2011, and what trends can be observed?
+**4. What is the total number of units sold for each month in 2011, and how did this metric evolve over the course of the year?**
 
-  This examination delves into the average sales per transaction for each month in 2011, revealing insights into the transaction values and their trends.
+```This analysis offers insights into the monthly variations in the total quantity of units sold, illuminating the demand patterns and fluctuations across the year.```
 
-6. What is the average number of units per transaction for each month in 2011, and how did this metric change over time?
+&nbsp;
 
-  This analysis provides information about the average number of units purchased per transaction for each month in 2011, offering insights into customer buying behavior.
-Data Analysis and Insights
+**5. How did the average sales per transaction fare on a monthly basis in 2011, and what trends can be observed?**
+
+```The analysis of average sales per transaction by month in 2011 provides insights into the values and trends of transactions.```
+
+&nbsp;
+
+**6. What is the average number of units per transaction for each month in 2011, and how did this metric change over time?**
+
+```This analysis provides information about the average number of units purchased per transaction for each month in 2011, offering insights into customer buying behavior.```
+
+&nbsp;
+
+# Data Analysis and Insights
 
 By employing various analytical techniques and SQL queries, I address the above questions and derive meaningful insights. The analysis encompasses a wide range of metrics, visualizations, and tables to present the findings effectively and comprehensively. These insights empower stakeholders to make informed decisions and strategic plans that capitalize on the trends and patterns revealed by the data.
 
