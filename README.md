@@ -141,8 +141,6 @@ Following these data cleaning steps, the dataset was prepared and optimized for 
 
 By employing various analytical techniques and SQL queries, I address the above questions and derive meaningful insights. The analysis encompasses a wide range of metrics, visualizations, and tables to present the findings effectively and comprehensively. These insights empower stakeholders to make informed decisions and strategic plans that capitalize on the trends and patterns revealed by the data.
 
-I  will answer the Stakeholder-Driven Questions through SQL.
-
 **1. What were the average daily sales for each month in the year 2011, and how did the month-over-month percentage change in average daily sales fluctuate?**
 
 ```sql
@@ -186,6 +184,179 @@ ORDER BY month;
 | 11    | Nov        | 44469.45        | 39832.4                  | 11.64              |
 | 12    | Dec        | 64648.8         | 44469.45                 | 45.38              |
 
+&nbsp;
+
+**2. How did the total sales per month unfold in 2011, and what were the month-over-month percentage variations in total sales?**
+
+```sql
+WITH sales_by_month AS (
+  SELECT
+      MONTH(InvoiceDate) AS month
+    , ROUND(SUM(quantity * unitprice), 2) AS total_monthly_sales
+    , ROUND(LAG(SUM(quantity * unitprice), 1) OVER (ORDER BY MONTH(InvoiceDate)), 2) AS previous_total_monthly_sales
+  FROM sales_unique
+  WHERE YEAR(InvoiceDate) = 2011
+  GROUP BY MONTH(InvoiceDate)
+)
+SELECT
+    month
+  , DATE_FORMAT(CONCAT('2011-', month, '-01'), '%b') AS month_name
+  , total_monthly_sales
+  , COALESCE(previous_total_monthly_sales, 0) AS previous_total_monthly_sales
+  , COALESCE(ROUND((total_monthly_sales - previous_total_monthly_sales) / previous_total_monthly_sales * 100, 2), 0) AS mom_percent_growth
+FROM sales_by_month
+ORDER BY month;
+```
+| month | month_name | total_monthly_sales | previous_total_monthly_sales | mom_percent_growth |
+|-------|------------|---------------------|------------------------------|--------------------|
+| 1     | Jan        | 568101.31           | 0                            | 0                  |
+| 2     | Feb        | 446084.92           | 568101.31                    | -21.48             |
+| 3     | Mar        | 594081.76           | 446084.92                    | 33.18              |
+| 4     | Apr        | 468374.33           | 594081.76                    | -21.16             |
+| 5     | May        | 677355.15           | 468374.33                    | 44.62              |
+| 6     | Jun        | 660046.05           | 677355.15                    | -2.56              |
+| 7     | Jul        | 598962.9            | 660046.05                    | -9.25              |
+| 8     | Aug        | 644051.04           | 598962.9                     | 7.53               |
+| 9     | Sep        | 950690.2            | 644051.04                    | 47.61              |
+| 10    | Oct        | 1035642.45          | 950690.2                     | 8.94               |
+| 11    | Nov        | 1156205.61          | 1035642.45                   | 11.64              |
+| 12    | Dec        | 517190.44           | 1156205.61                   | -55.27             |
+
+&nbsp;
+
+**3. What is the overall count of transactions for each month in 2011, shedding light on the transactional dynamics throughout the year?**
+
+```sql
+SELECT
+    MONTH(InvoiceDate) AS month
+  , DATE_FORMAT(InvoiceDate, '%b') AS month_name
+  , COUNT(DISTINCT InvoiceNo) AS Total_Transactions
+FROM sales_unique
+GROUP BY MONTH(InvoiceDate), DATE_FORMAT(InvoiceDate, '%b')
+ORDER BY MONTH(InvoiceDate);
+```
+| month | month_name | Total_Transactions |
+|-------|------------|--------------------|
+| 1     | Jan        | 987                |
+| 2     | Feb        | 998                |
+| 3     | Mar        | 1321               |
+| 4     | Apr        | 1149               |
+| 5     | May        | 1555               |
+| 6     | Jun        | 1393               |
+| 7     | Jul        | 1331               |
+| 8     | Aug        | 1281               |
+| 9     | Sep        | 1756               |
+| 10    | Oct        | 1929               |
+| 11    | Nov        | 2658               |
+| 12    | Dec        | 778                |
+
+&nbsp;
+
+**4. What is the total number of units sold for each month in 2011, and how did this metric evolve over the course of the year?**
+
+```sql
+SELECT
+    MONTH(InvoiceDate) AS month
+  , DATE_FORMAT(InvoiceDate, '%b') AS month_name
+  , COUNT(*) AS Total_Units_Sold
+FROM sales_unique
+GROUP BY MONTH(InvoiceDate), DATE_FORMAT(InvoiceDate, '%b')
+ORDER BY MONTH(InvoiceDate);
+```
+| month | month_name | Total_Units_Sold |
+|-------|------------|------------------|
+| 1     | Jan        | 20991            |
+| 2     | Feb        | 19707            |
+| 3     | Mar        | 26872            |
+| 4     | Apr        | 22435            |
+| 5     | May        | 28075            |
+| 6     | Jun        | 26926            |
+| 7     | Jul        | 26582            |
+| 8     | Aug        | 26796            |
+| 9     | Sep        | 39671            |
+| 10    | Oct        | 48796            |
+| 11    | Nov        | 63182            |
+| 12    | Dec        | 17026            |
+
+&nbsp;
+
+**5. How did the average sales per transaction fare on a monthly basis in 2011, and what trends can be observed?**
+
+```sql
+WITH monthly_avg_sales_per_transaction AS (
+  SELECT
+      MONTH(InvoiceDate) AS month
+    , ROUND(AVG(total_amount / transaction_count), 2) AS avg_sales_per_transaction
+  FROM (
+    SELECT
+        InvoiceNo
+      , InvoiceDate
+      , SUM(Quantity * UnitPrice) AS total_amount
+      , COUNT(DISTINCT InvoiceNo) AS transaction_count
+    FROM sales_unique
+    WHERE YEAR(InvoiceDate) = 2011
+    GROUP BY InvoiceNo, InvoiceDate
+  ) transactions
+  GROUP BY MONTH(InvoiceDate)
+)
+SELECT
+    month
+  , DATE_FORMAT(CONCAT('2011-', month, '-01'), '%b') AS month_name
+  , avg_sales_per_transaction
+FROM monthly_avg_sales_per_transaction
+ORDER BY month;
+```
+| month | month_name | avg_sales_per_transaction |
+|-------|------------|---------------------------|
+| 1     | Jan        | 572.11                    |
+| 2     | Feb        | 444.75                    |
+| 3     | Mar        | 448.7                     |
+| 4     | Apr        | 406.22                    |
+| 5     | May        | 434.48                    |
+| 6     | Jun        | 473.49                    |
+| 7     | Jul        | 450.01                    |
+| 8     | Aug        | 501.99                    |
+| 9     | Sep        | 541.09                    |
+| 10    | Oct        | 536.6                     |
+| 11    | Nov        | 434.66                    |
+| 12    | Dec        | 664.77                    |
+
+&nbsp;
+
+**6. What is the average number of units per transaction for each month in 2011, and how did this metric change over time?**
+
+```sql
+WITH monthly_avg_units_per_transaction AS (
+  SELECT
+      MONTH(InvoiceDate) AS month
+    , ROUND(AVG(Quantity), 2) AS avg_units_per_transaction
+  FROM sales_unique
+  WHERE YEAR(InvoiceDate) = 2011
+  GROUP BY MONTH(InvoiceDate)
+)
+SELECT
+    month
+  , DATE_FORMAT(CONCAT('2011-', month, '-01'), '%b') AS month_name
+  , avg_units_per_transaction
+FROM monthly_avg_units_per_transaction
+ORDER BY month;
+```
+| month | month_name | avg_units_per_transaction |
+|-------|------------|---------------------------|
+| 1     | Jan        | 16.60                     |
+| 2     | Feb        | 13.45                     |
+| 3     | Mar        | 12.94                     |
+| 4     | Apr        | 12.99                     |
+| 5     | May        | 13.28                     |
+| 6     | Jun        | 13.48                     |
+| 7     | Jul        | 13.82                     |
+| 8     | Aug        | 14.86                     |
+| 9     | Sep        | 13.70                     |
+| 10    | Oct        | 12.12                     |
+| 11    | Nov        | 10.74                     |
+| 12    | Dec        | 16.84                     |
+
+&nbsp;
 
 
 Visualizations
