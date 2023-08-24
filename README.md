@@ -186,6 +186,11 @@ ORDER BY month;
 
 &nbsp;
 
+**Insights:**
+- The average daily sales in December are significantly higher than in any other month, even though there are only 8 days of transactions. This suggests that the business may be experiencing a surge in holiday sales.
+- The month-over-month (MOM) growth rate in December is also significantly higher than in any other month. This suggests that the business may be benefiting from the holiday season.
+- The business may want to focus on marketing and promotions during December to capitalize on the holiday season. They could also consider offering discounts or special promotions to attract customers.
+
 **2. How did the total sales per month unfold in 2011, and what were the month-over-month percentage variations in total sales?**
 
 ```sql
