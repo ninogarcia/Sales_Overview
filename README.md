@@ -137,9 +137,56 @@ WHERE YEAR(InvoiceDate) < 2011;
 ```
 Following these data cleaning steps, the dataset was prepared and optimized for in-depth analysis. The cleaned dataset was then used to derive valuable insights into the sales trends and performance during the year 2011.
 
-# Data Analysis and Insights
+# Data Analysis
 
 By employing various analytical techniques and SQL queries, I address the above questions and derive meaningful insights. The analysis encompasses a wide range of metrics, visualizations, and tables to present the findings effectively and comprehensively. These insights empower stakeholders to make informed decisions and strategic plans that capitalize on the trends and patterns revealed by the data.
+
+I  will answer the Stakeholder-Driven Questions through SQL.
+
+**1. What were the average daily sales for each month in the year 2011, and how did the month-over-month percentage change in average daily sales fluctuate?**
+
+```sql
+WITH daily_sales AS (
+  SELECT
+      DATE_FORMAT(InvoiceDate, '%Y-%m-%d') AS date
+    , SUM(quantity * unitprice) AS total_sales
+  FROM sales_unique
+  WHERE YEAR(InvoiceDate) = 2011
+  GROUP BY DATE_FORMAT(InvoiceDate, '%Y-%m-%d')
+),
+monthly_avg_daily_sales AS (
+  SELECT
+      MONTH(date) AS month
+    , ROUND(AVG(total_sales), 2) AS avg_daily_sales
+    , ROUND(LAG(AVG(total_sales), 1) OVER (ORDER BY MONTH(date)), 2) AS previous_avg_daily_sales
+  FROM daily_sales
+  GROUP BY MONTH(date)
+)
+SELECT
+    month
+  , DATE_FORMAT(CONCAT('2011-', month, '-01'), '%b') AS month_name
+  , avg_daily_sales
+  , COALESCE(previous_avg_daily_sales, 0) AS previous_avg_daily_sales
+  , COALESCE(ROUND((avg_daily_sales - previous_avg_daily_sales) / previous_avg_daily_sales * 100, 2), 0) AS mom_percent_growth
+FROM monthly_avg_daily_sales
+ORDER BY month;
+```
+| month | month_name | avg_daily_sales | previous_avg_daily_sales | mom_percent_growth |
+|-------|------------|-----------------|--------------------------|--------------------|
+| 1     | Jan        | 23670.89        | 0                        | 0                  |
+| 2     | Feb        | 18586.87        | 23670.89                 | -21.48             |
+| 3     | Mar        | 22003.03        | 18586.87                 | 18.38              |
+| 4     | Apr        | 22303.54        | 22003.03                 | 1.37               |
+| 5     | May        | 27094.21        | 22303.54                 | 21.48              |
+| 6     | Jun        | 25386.39        | 27094.21                 | -6.3               |
+| 7     | Jul        | 23037.03        | 25386.39                 | -9.25              |
+| 8     | Aug        | 24771.19        | 23037.03                 | 7.53               |
+| 9     | Sep        | 36565.01        | 24771.19                 | 47.61              |
+| 10    | Oct        | 39832.4         | 36565.01                 | 8.94               |
+| 11    | Nov        | 44469.45        | 39832.4                  | 11.64              |
+| 12    | Dec        | 64648.8         | 44469.45                 | 45.38              |
+
+
 
 Visualizations
 The analysis is enriched with visual representations such as line charts and tables, which facilitate the communication of insights to stakeholders. These visualizations enable a clear and concise understanding of the sales trends and performance metrics for the year 2011.
