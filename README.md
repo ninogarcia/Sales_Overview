@@ -365,7 +365,7 @@ ORDER BY month;
 
 # Insights
 
-Here are some powerful insights I can derive from this retail sales data for 2011:
+Here are some powerful insights I derived from the  sales data for 2011:
 
 * While average daily sales growth was positive for most of the year, December saw an unprecedented 45% jump in average sales, signaling strong holiday demand. This helped drive full-year growth.
 
@@ -379,8 +379,15 @@ Here are some powerful insights I can derive from this retail sales data for 201
 
 In summary, while December sales figures were distorted by fewer trading days, the full-year data tells a compelling story of consistently expanding volumes, baskets and throughput - signaling powerful momentum in this retailer's business. This data reflects a well-run operation that understand customers and seasons, employing promotions adeptly to convert opportunities into material, sustained gains in top and bottom line performance year-over-year. Strategic focus on high-volume periods yielded results.
 
-Visualizations
-The analysis is enriched with visual representations such as line charts and tables, which facilitate the communication of insights to stakeholders. These visualizations enable a clear and concise understanding of the sales trends and performance metrics for the year 2011.
+# Visualizations
+The analysis is enriched with visual representations such as line charts and bar charts, which facilitate the communication of insights to stakeholders. These visualizations enable a clear and concise understanding of the sales trends and performance metrics for the year 2011.
+
+**You can check the Dashboard here:**
+https://tinyurl.com/Sales-Overview
+
+**Preview:**
+![image](https://github.com/ninogarcia/Sales_Overview/assets/7455410/261a31b2-5a47-4ae6-be98-101334d2f602)
+
 
 Conclusion
 Through this comprehensive data analysis, I provide stakeholders with valuable insights into the sales performance of the year 2011. The answers to the stakeholders' questions shed light on various facets of sales trends, enabling data-driven decision-making and strategic planning. These insights hold the potential to enhance sales strategies and optimize business performance in the future.
