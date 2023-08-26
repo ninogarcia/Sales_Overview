@@ -2,8 +2,8 @@
 |---|---|
 | Created Date | 8-26-2023 |
 | Release Date | 8-26-2023 |
-| Author | @ninogarcia |
-| Owner | @ninogarcia |
+| Author | [Niño Garcia](https://www.linkedin.com/in/ninogarci) |
+| Owner | [Niño Garcia](https://www.linkedin.com/in/ninogarci) |
 | Dashboard URL | [Sales Overview](https://tinyurl.com/Sales-Overview)|
 | Refresh Schedule | Daily |
 | Refresh Time | 8:00am Philippine Time |
