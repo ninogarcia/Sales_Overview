@@ -405,7 +405,12 @@ Special Thanks to [Atharva Arya](https://www.kaggle.com/atharvaarya25) for the a
 
 
 # Contact Information
+
+You can connect with me and explore more about my professional journey through the following platforms:
+
 [LinkedIn](https://www.linkedin.com/in/ninogarci/)
 &nbsp;
 
 [UpWork](https://www.upwork.com/freelancers/~01dd78612ac234aadd)
+
+Feel free to reach out and connect. I'm excited to engage in meaningful discussions and collaborations!
