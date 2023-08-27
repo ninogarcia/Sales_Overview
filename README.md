@@ -186,11 +186,6 @@ ORDER BY month;
 
 &nbsp;
 
-**Insights:**
-- The average daily sales in December are significantly higher than in any other month, even though there are only 8 days of transactions. This suggests that the business may be experiencing a surge in holiday sales.
-- The month-over-month (MOM) growth rate in December is also significantly higher than in any other month. This suggests that the business may be benefiting from the holiday season.
-- The business may want to focus on marketing and promotions during December to capitalize on the holiday season. They could also consider offering discounts or special promotions to attract customers.
-
 **2. How did the total sales per month unfold in 2011, and what were the month-over-month percentage variations in total sales?**
 
 ```sql
@@ -380,10 +375,19 @@ Here are some powerful insights I derived from the  sales data for 2011:
 In summary, while December sales figures were distorted by fewer trading days, the full-year data tells a compelling story of consistently expanding volumes, baskets and throughput - signaling powerful momentum in this retailer's business. This data reflects a well-run operation that understand customers and seasons, employing promotions adeptly to convert opportunities into material, sustained gains in top and bottom line performance year-over-year. Strategic focus on high-volume periods yielded results.
 
 # Visualization
-The analysis is enriched with visual representations such as line charts and bar charts, which facilitate the communication of insights to stakeholders. These visualizations enable a clear and concise understanding of the sales trends and performance metrics for the year 2011.
+The heart of insightful analysis lies in the ability to translate complex data into actionable insights. In order to facilitate a deeper understanding of the analysis, I have harnessed the power of data visualization techniques to provide stakeholders with a comprehensive view of sales trends and performance metrics throughout the year 2011.
 
-**You can check the Dashboard here:**
+The analysis process primarily revolves around MySQL, where intricate SQL codes are meticulously crafted to extract valuable insights from the data. This approach ensures that the insights are rooted in robust data analysis and manipulation.
+
+For the purpose of visualization, Power BI is employed as the tool of choice. It's important to note that Power BI is used exclusively for visualizing the insights derived from the MySQL analysis. No calculations or data manipulations are performed within Power BI. This approach maintains the integrity of the analysis while utilizing Power BI's capabilities to present the insights in an engaging and interactive manner.
+
+By combining the analytical prowess of MySQL with the visualization capabilities of Power BI, I aim to offer stakeholders a holistic experience that not only comprehensively explains the trends but also empowers them to make informed decisions based on the insights derived from the data.
+
+**You can check the PowerBI Dashboard here:**
 https://tinyurl.com/Sales-Overview
+
+**Dashboard Documentation:**
+https://github.com/ninogarcia/Sales_Overview/blob/main/Dashboard%20Documentation.pdf
 
 **Preview:**
 ![image](https://github.com/ninogarcia/Sales_Overview/assets/7455410/261a31b2-5a47-4ae6-be98-101334d2f602)
@@ -392,3 +396,16 @@ https://tinyurl.com/Sales-Overview
 # Conclusion
 
 In conclusion, the 2011 sales data provides compelling evidence that the retailer achieved strong growth over the course of the year through strategic efforts to maximize sales during key periods. While December sales were inflated due to calendar effects, the overall full-year trends point to steadily rising revenues, units, and transactions driven by higher average transaction sizes and units per transaction. This suggests the company understood customer needs and purchase behaviors related to seasonal events, applying promotions successfully to consolidate spend and boost basket sizes. Even accounting for distortions, performance was markedly improved versus the previous year. The data analysis therefore demonstrates how the retailer astutely leveraged seasonal demand spikes and adjusted its marketing approach to harvest greater value from these opportunities. As a result, the business was able to gain meaningful market share and increase profitability through better fulfillment of customer requirements. Overall, the insights reveal a well-managed operation that drove powerful momentum through adept promotion execution aligned with customer lifecycles.
+
+
+# Credits: 
+
+Special Thanks to [Atharva Arya](https://www.kaggle.com/atharvaarya25) for the amazing Dataset from Kaggle: https://www.kaggle.com/datasets/atharvaarya25/e-commerce-analysis-uk
+
+
+
+# Contact Information
+[LinkedIn](https://www.linkedin.com/in/ninogarci/)
+&nbsp;
+
+[UpWork](https://www.upwork.com/freelancers/~01dd78612ac234aadd)
